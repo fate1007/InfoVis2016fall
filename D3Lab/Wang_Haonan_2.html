@@ -1,0 +1,58 @@
+<!Doctype: html>
+
+<html>
+<head>
+<title>Info Vis D3 hw 2</title>
+<style>
+button {
+	background-color: white;
+}
+h1 {
+font-size: 40px;
+font-weight: bold;
+color: white;
+background-color: black;
+}
+h2 {
+font-size: 32px;
+font-weight: bold;
+color: black;
+}
+p {
+font-size: 24px;
+}
+ul li{
+	list-style: none;
+}
+</style>
+</head>
+<body>
+<h1>Gapminder - Weather and Health</h1>
+<div>
+<h2>Countries</h2>
+</div>
+<ul id="list">
+</ul>
+</body>
+<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<script>
+	var list = d3.select("#list");
+	var countries_data = [];
+	d3.json("https://raw.githubusercontent.com/CristianFelix/infoviz/master/gapminder.json", 
+		function(error, result){
+			countries_data = result;
+			render();
+		})
+
+	function render(){
+		var changes = list.selectAll("li").data(countries_data, function(country){return country.name;});
+
+		changes.enter()
+				.append("li")
+				.text(function(country){return country.name});
+
+		changes.exit()
+				.remove();
+	}
+</script>
+</html>

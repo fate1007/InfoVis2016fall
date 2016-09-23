@@ -1,0 +1,52 @@
+<!Doctype: html>
+
+<html>
+<head>
+<title>Info Vis D3 hw 2</title>
+<style>
+button {
+	background-color: white;
+}
+h1 {
+font-size: 40px;
+font-weight: bold;
+color: white;
+background-color: black;
+}
+h2 {
+font-size: 32px;
+font-weight: bold;
+color: black;
+}
+p {
+font-size: 24px;
+}
+ul li{
+	list-style: none;
+}
+</style>
+</head>
+<body>
+<h1>Whatever aqmewjxoijmdeoifjosajd,lfkwe</h1>
+<div>
+<h2>Countries
+<input id="input" type="text"/>
+<button onclick="addcountry();">Add</button>
+</h2>
+</div>
+<ul id="list">
+</ul>
+<script>
+function addcountry(){
+	var input = document.getElementById("input").value;
+	if(input != "" && input != null){
+		document.getElementById("input").value = "";
+		var list = document.getElementById("list");
+		var item = document.createElement("li");
+		item.innerHTML = input;
+		list.appendChild(item);
+	}
+}
+</script>
+</body>
+</html>
